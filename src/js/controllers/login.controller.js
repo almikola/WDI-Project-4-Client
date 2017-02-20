@@ -7,13 +7,12 @@ function LoginCtrl(User, CurrentUserService, $state) {
   const vm = this;
 
   vm.login = () => {
-    User.login(vm.user)
-    .$promise
-    .then(() => {
-      CurrentUserService.getUser();
-      $state.go('index');
-    }, err => {
-      console.log(err);
-    });
+    User
+      .login(vm.user).$promise
+      .then(() => {
+        CurrentUserService.getUser();
+      }, err => {
+        console.log(err);
+      });
   };
 }

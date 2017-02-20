@@ -7,11 +7,15 @@ function TokenService($window, jwtHelper) {
   const self = this;
 
   self.setToken = (token) => {
-    $window.localStorage.setItem('auth-token', token);
+    return $window.localStorage.setItem('auth-token', token);
   };
 
   self.getToken = () => {
     return $window.localStorage.getItem('auth-token');
+  };
+
+  self.removeToken = () => {
+    $window.localStorage.clear();
   };
 
   self.decodeToken = () => {

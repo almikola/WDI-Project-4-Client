@@ -1,5 +1,6 @@
-angular.module('MeetMe', [
-  'ui.router',
-  'ngResource',
-  'angular-jwt'
-]);
+angular
+  .module('MeetMe', [
+    'ui.router',
+    'ngResource',
+    'angular-jwt'
+  ]);
