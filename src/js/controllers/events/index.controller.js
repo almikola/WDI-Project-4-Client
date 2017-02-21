@@ -14,4 +14,5 @@ function EventsIndexCtrl(Event) {
     console.log(data);
     vm.event = data;
   });
+
 }

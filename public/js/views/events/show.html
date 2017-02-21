@@ -1,0 +1,27 @@
+<h1>{{ eventsShow.event.title }}</h1>
+
+
+<h3>Invitations sent:</h3>
+<ul>
+  <li ng-repeat="invitation in eventsShow.event.invitations">
+    <p>{{invitation.receiver.email }}</p>
+  </li>
+</ul>
+
+<div class="invitationsDiv" ng-if="eventsShow.event.owner.id === main.user.id">
+  <h2>Submit Invitations</h2>
+  <form ng-hide="eventsShow.usersFound" ng-submit="eventsShow.findUser()">
+    <input type="email" name="" ng-model="eventsShow.userSearch" placeholder="Who do you want to invite? (Search by email)">
+    <input type="submit" value="Submit">
+  </form>
+  <form ng-show="eventsShow.usersFound.length" ng-submit="eventsShow.submitInvitation()">
+    <select ng-model="eventsShow.invitation.receiver_id">
+      <option ng-repeat="user in eventsShow.usersFound" value="{{user.id}}">{{user.email}}</option>
+    </select>
+    <input type="submit" name="" value="Submit">
+  </form>
+  <form ng-show="eventsShow.usersFound && !eventsShow.usersFound.length" >
+    <p>No email found - send email to {{eventsShow.userSearch}}?</p>
+    <button ng-click="eventsShow.searchAgain()" name="button">No - search again for users</button>
+  </form>
+</div>
