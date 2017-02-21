@@ -23,11 +23,17 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
     controller: 'LoginCtrl',
     controllerAs: 'login'
   })
-  .state('usersIndex', {
-    url: '/users',
-    templateUrl: '/js/views/users/index.html',
-    controller: 'UsersIndexCtrl',
-    controllerAs: 'usersIndex'
+  .state('usersShow', {
+    url: '/users/:id',
+    templateUrl: '/js/views/users/show.html',
+    controller: 'UsersShowCtrl',
+    controllerAs: 'usersShow'
+  })
+  .state('eventsIndex', {
+    url: '/events',
+    templateUrl: '/js/views/events/index.html',
+    controller: 'EventsIndexCtrl',
+    controllerAs: 'eventsIndex'
   });
 
   $urlRouterProvider.otherwise('/');
