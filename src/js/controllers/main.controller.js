@@ -2,9 +2,15 @@ angular
   .module('MeetMe')
   .controller('MainCtrl', MainCtrl);
 
-MainCtrl.$inject = ['$rootScope', 'CurrentUserService', '$state'];
-function MainCtrl($rootScope, CurrentUserService, $state) {
+MainCtrl.$inject = ['$scope', '$rootScope', 'CurrentUserService', '$state'];
+function MainCtrl($scope, $rootScope, CurrentUserService, $state) {
   const vm = this;
+
+  vm.coords = {};
+  navigator.geolocation.getCurrentPosition(position => {
+    vm.coords.lat = position.coords.latitude;
+    vm.coords.lng = position.coords.longitude;
+  });
 
   $rootScope.$on('loggedIn', () => {
     vm.user = CurrentUserService.currentUser;

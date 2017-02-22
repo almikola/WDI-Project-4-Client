@@ -1,10 +1,29 @@
 angular
-  .module('MeetMe')
-  .controller('UsersShowCtrl', UsersShowCtrl);
+.module('MeetMe')
+.controller('UsersShowCtrl', UsersShowCtrl);
 
-UsersShowCtrl.$inject = ['User', '$stateParams'];
-function UsersShowCtrl(User, $stateParams){
+UsersShowCtrl.$inject = ['User', 'Event', '$stateParams'];
+function UsersShowCtrl(User, Event, $stateParams){
   const vm = this;
 
-  vm.user = User.get({ id: $stateParams.id })
+  User
+  .get({ id: $stateParams.id })
+  .$promise
+  .then(function(data) {
+    vm.user = data;
+    vm.user.events.forEach((event) => {
+      event.time = event.time.substring(11, 16);
+    })
+
+  });
+
+  vm.deleteEvent = function(eventId) {
+    Event
+    .delete({id: eventId})
+    .$promise
+    .then(function() {
+      vm.user = User.get({ id: $stateParams.id })
+    });
+  };
+
 }

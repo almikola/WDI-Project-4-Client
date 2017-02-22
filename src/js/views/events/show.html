@@ -1,17 +1,22 @@
+<h1>Created Event</h1>
+
 <h1>{{ eventsShow.event.title }}</h1>
+<p>{{ eventsShow.event.date }}</p>
+<p>{{ eventsShow.event.time }}</p>
 
 
-<h3>Invitations sent:</h3>
+
+<h3>Who's invited:</h3>
 <ul>
   <li ng-repeat="invitation in eventsShow.event.invitations">
-    <p>{{invitation.receiver.email }}</p>
+    <p>{{invitation.receiver.email }} <button ng-if="invitation.receiver.id === main.user.id && invitation.status != 'accepted'" type="button" name="button" ng-click="eventsShow.acceptInvitation(invitation, main.coords)">Accept</button><button ng-if="invitation.sender.id === main.user.id && invitation.status != 'accepted'" type="button" name="button" ng-click="eventsShow.deleteInvitation(invitation)">Delete</button></p>
   </li>
 </ul>
 
 <div class="invitationsDiv" ng-if="eventsShow.event.owner.id === main.user.id">
   <h2>Submit Invitations</h2>
   <form ng-hide="eventsShow.usersFound" ng-submit="eventsShow.findUser()">
-    <input type="email" name="" ng-model="eventsShow.userSearch" placeholder="Who do you want to invite? (Search by email)">
+    <input type="text" name="" ng-model="eventsShow.userSearch" placeholder="Who do you want to invite? (Search by email)">
     <input type="submit" value="Submit">
   </form>
   <form ng-show="eventsShow.usersFound.length" ng-submit="eventsShow.submitInvitation()">
@@ -25,3 +30,6 @@
     <button ng-click="eventsShow.searchAgain()" name="button">No - search again for users</button>
   </form>
 </div>
+
+
+<button ng-click="eventsShow.averageLocation()" name="button">What's the average?</button>
