@@ -1,6 +1,9 @@
 <h1>Users Show</h1>
 
 <h3>{{ usersShow.user.email }}</h3>
+<img ng-src="{{usersShow.user.image}}">
+
+
 
 <h4>Events</h4>
 <ul>
@@ -23,3 +26,5 @@
 </ul>
 
 <button ui-sref='eventsNew'>New Event</button>
+
+<button class="btn btn-default" ui-sref="usersEdit({ id: usersShow.user.id })">Edit</button>
