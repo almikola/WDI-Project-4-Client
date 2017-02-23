@@ -1,18 +1,20 @@
-<h2>Edit Event</h2>
+<div class="container">
+  <h2>Edit Event</h2>
 
-<form ng-submit="eventsEdit.eventsUpdate()">
-  <div class="form-group">
-    <input class="form-control" type="title" name="title" ng-model="eventsEdit.event.title" value="eventsEdit.event.title" placeholder="Title">
-  </div>
-  <div class="form-group">
-    <input class="form-control" type="date" name="date" ng-model="eventsEdit.event.date" placeholder="Date" required/>
-  </div>
-  <div class="form-group">
-    <input class="form-control" type="time" name="time" ng-model="eventsEdit.event.time" placeholder="Time" value="eventsEdit.event.time">
-  </div>
-  <div class="form-group">
-    <label for="image">Image</label>
-    <input type="text" class="form-control" id="image" placeholder="Image url" ng-model="eventsEdit.event.image">
-  </div>
-  <input class="btn btn-primary" type="submit" value="Update" />
-</form>
+  <form ng-submit="eventsEdit.eventsUpdate()">
+    <div class="form-group">
+      <input class="form-control" type="title" name="title" ng-model="eventsEdit.event.title" value="eventsEdit.event.title" placeholder="Title">
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="date" name="date" ng-model="eventsEdit.event.date" placeholder="Date" required/>
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="time" name="time" ng-model="eventsEdit.event.time" placeholder="Time" value="eventsEdit.event.time">
+    </div>
+    <div class="form-group">
+      <label for="image">Image</label>
+      <input type="text" class="form-control" id="image" placeholder="Image url" ng-model="eventsEdit.event.image">
+    </div>
+    <input class="btn btn-primary" type="submit" value="Update" />
+  </form>
+</div>

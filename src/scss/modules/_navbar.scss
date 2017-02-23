@@ -1,0 +1,131 @@
+$content-width: 1000px;
+$breakpoint: 800px;
+$nav-height: 70px;
+$nav-background: #004069;
+$nav-font-color: #ffffff;
+$link-hover-color: #FF4C50;
+
+nav {
+  float: right;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      float: left;
+      position: relative;
+      a {
+        display: block;
+        padding: 0 20px;
+        line-height: $nav-height;
+        background: $nav-background;
+        color: $nav-font-color;
+        text-decoration: none;
+        &:hover {
+          background: $link-hover-color;
+          color: $nav-font-color;
+        }
+        &:not(:only-child):after {
+          padding-left: 4px;
+          content: ' ▾';
+        }
+      } // Dropdown list
+      ul li {
+        a {
+        }
+      }
+    }
+  }
+}
+
+.navigation {
+  height: $nav-height;
+  background: $nav-background;
+}
+
+.nav-container {
+  max-width: $content-width;
+  margin: 0 auto;
+}
+
+.brand {
+  position: absolute;
+  padding-left: 20px;
+  float: left;
+  line-height: $nav-height;
+  // text-transform: uppercase;
+  font-size: 1.4em;
+  a,
+  a:visited {
+    color: $nav-font-color;
+    text-decoration: none;
+  }
+}
+
+
+
+
+
+
+// .navbar header {
+//   background: $white;
+//   box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.1);
+//   line-height: 64px;
+//
+//   .navbar-default {
+//     background-color: $white;
+//     border-top: 2px solid $blue;
+//
+//     .navbar-brand {
+//       font-family: $logo-font;
+//       font-size: 3rem;
+//       font-weight: 800;
+//       color: $blue;
+//       line-height: 64px;
+//       height: 64px;
+//       padding: 4px 0 0 0;
+//     }
+//
+//     .navbar-brand:hover {
+//       color: $blue;
+//     }
+//
+//     .navbar-brand:focus {
+//       color: $blue;
+//     }
+//
+//     .navbar-text {
+//       margin: 0;
+//       padding-right: 15px;
+//     }
+//
+//
+//   .btn-primary:hover {
+//    color: white;
+//    background-color: $blue;
+//    border: 1px solid $blue;
+//
+//   }
+//   }
+//
+//   .navbar {
+//     line-height: 64px;
+//     margin-bottom: 0;
+//   }
+//
+//   .nav > li > a {
+//     line-height: 64px;
+//     padding: 0 15px;
+//     font-size: 1.5rem;
+//     .btn {
+//       font-size: 1.5rem;
+//     }
+//   }
+// }
+//
+// .navbar-default .navbar-nav > li > a {
+//   color: $blue;
+// }
+// .navbar-default .navbar-nav > li > a:hover {
+//   color: $blue;
+// }

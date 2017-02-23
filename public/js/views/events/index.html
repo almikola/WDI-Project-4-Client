@@ -1,8 +1,10 @@
-<h4>Your Events</h4>
-<ul>
-  <li ng-repeat="event in usersShow.user.events">
-    <h5 ui-sref="eventsShow({ id: event.id })">{{ event.title }}</h5>
-    <p>{{ event.time }}, {{ event.date }}</p>
-    <img ng-src="{{eventsShow.event.image}}">
-  </li>
-</ul>
+<div class="container">
+  <h4>Your Events</h4>
+  <ul>
+    <li ng-repeat="event in usersShow.user.events">
+      <h5 ui-sref="eventsShow({ id: event.id })">{{ event.title }}</h5>
+      <p>{{ event.time }}, {{ event.date }}</p>
+      <img ng-src="{{eventsShow.event.image}}">
+    </li>
+  </ul>
+</div>
