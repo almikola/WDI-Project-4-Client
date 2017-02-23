@@ -5,42 +5,52 @@
   <title>MeetMe</title>
   <base href="/" />
   <link href="https://fonts.googleapis.com/css?family=Raleway|Sansita:700" rel="stylesheet">
-  <style type="text/css">
-  </style>
+  <style type="text/css"></style>
+  <!-- inject:js -->
+  <script src="js/app.js"></script>
+  <!-- endinject -->
   <!-- inject:css -->
   <link rel="stylesheet" href="css/style.css">
   <!-- endinject -->
 </head>
-<div class="container">
-  <body ng-controller="MainCtrl as main">
+<body ng-controller="MainCtrl as main">
+  <div class="container">
     <header>
       <section class="navigation">
         <div class="nav-container">
           <div class="brand">
-            <a href="#!">MeetMe</a>
+            <a ui-sref="usersShow({ id: main.user.id })">MeetMe</a>
           </div>
           <nav>
             <ul class="nav-list">
-              <li><p>Hi, {{ main.user.email }}!</p></li>
-              <li ng-hide="main.user"><a ui-sref="register">Register</a></li>
-              <li ng-hide="main.user"><a ui-sref="login">Login</a></li>
-              <li ng-show="main.user"><a ui-sref="usersShow({ id: main.user.id })">Profile</a></li>
-              <li ng-show="main.user"><a href="#!">Create Event</a></li>
-              <li ng-show="main.user"><a ng-click="main.logout()">Logout</a></li>
+              <li ng-show="main.user">
+                <p>Hi, {{ main.user.email }}!</p>
+              </li>
+              <li ng-hide="main.user">
+                <a ui-sref="register">Register</a>
+              </li>
+              <li ng-hide="main.user">
+                <a ui-sref="login">Login</a>
+              </li>
+              <li ng-show="main.user">
+                <a ui-sref="usersShow({ id: main.user.id })">Profile</a>
+              </li>
+              <li ng-show="main.user">
+                <a >Create Event</a>
+              </li>
+              <li ng-show="main.user">
+                <a ng-click="main.logout()">Logout</a>
+              </li>
             </ul>
           </nav>
         </div>
       </section>
     </header>
-
     <main class="container" ui-view></main>
+    <footer>
+      <p class="footer-text">MeetMe is a registered trademark of A.Mikola.<br>
+        Made with &hearts; at GA</p>
+      </footer>
+    </div>
   </body>
-
-
-
-  <footer>
-    <p class="footer-text">MeetMe is a registered trademark of A.Mikola.<br>
-      Made with &hearts; at GA</p>
-    </footer>
-  </div>
   </html>
