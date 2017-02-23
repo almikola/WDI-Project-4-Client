@@ -4,6 +4,7 @@ $nav-height: 70px;
 $nav-background: #004069;
 $nav-font-color: #ffffff;
 $link-hover-color: #FF4C50;
+$red: #FF4C50;
 
 nav {
   float: right;
@@ -20,6 +21,7 @@ nav {
         line-height: $nav-height;
         background: $nav-background;
         color: $nav-font-color;
+        // font-size: 0.9em;
         text-decoration: none;
         &:hover {
           background: $link-hover-color;
@@ -45,7 +47,9 @@ nav {
   padding-left: 20px;
   float: left;
   line-height: $nav-height;
-  font-size: 1.4em;
+  font-size: 2.3em;
+  font-weight: bold;
+  font-family: $logo-font;
   a,
   a:visited {
     color: $nav-font-color;
