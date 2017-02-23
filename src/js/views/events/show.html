@@ -11,9 +11,9 @@
 <ul>
   <li ng-repeat="invitation in eventsShow.event.invitations">
     <p>{{invitation.receiver.email }} <button ng-if="invitation.receiver.id === main.user.id && invitation.status != 'accepted'" type="button" name="button" ng-click="eventsShow.acceptInvitation(invitation, main.coords)">Accept</button><button ng-if="invitation.sender.id === main.user.id && invitation.status != 'accepted'" type="button" name="button" ng-click="eventsShow.deleteInvitation(invitation)">Delete</button></p>
-    <img ng-src="{{eventsShow.event.invitations.user.image}}">
+    <img ng-src="{{invitation.receiver.image}}">
 
-    WHY IS THIS NOT WORRRRRKINGGGG
+
   </li>
 </ul>
 
