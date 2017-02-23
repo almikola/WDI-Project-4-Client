@@ -1,5 +1,4 @@
 <div class="container">
-  <h1>Created Event</h1>
 
   <h1>{{ eventsShow.event.title }}</h1>
   <p>{{ eventsShow.event.date }}</p>
@@ -7,36 +6,50 @@
   <img ng-src="{{eventsShow.event.image}}">
 
 
+  <div ng-hide="eventsShow.event.active === 'no'">
+    <h3>Who's invited:</h3>
+    <ul>
+      <li ng-repeat="invitation in eventsShow.event.invitations">
+        <p>{{invitation.receiver.email }} <button ng-if="invitation.receiver.id === main.user.id && invitation.status != 'accepted'" type="button" name="button" ng-click="eventsShow.acceptInvitation(invitation, main.coords)">Accept</button><button ng-if="invitation.sender.id === main.user.id && invitation.status != 'accepted'" type="button" name="button" ng-click="eventsShow.deleteInvitation(invitation)">Delete</button></p>
+        <img ng-src="{{invitation.receiver.image}}">
 
-  <h3>Who's invited:</h3>
-  <ul>
-    <li ng-repeat="invitation in eventsShow.event.invitations">
-      <p>{{invitation.receiver.email }} <button ng-if="invitation.receiver.id === main.user.id && invitation.status != 'accepted'" type="button" name="button" ng-click="eventsShow.acceptInvitation(invitation, main.coords)">Accept</button><button ng-if="invitation.sender.id === main.user.id && invitation.status != 'accepted'" type="button" name="button" ng-click="eventsShow.deleteInvitation(invitation)">Delete</button></p>
-      <img ng-src="{{invitation.receiver.image}}">
+
+      </li>
+    </ul>
+
+    <div class="invitationsDiv" ng-if="eventsShow.event.owner.id === main.user.id">
+      <h2>Submit Invitations</h2>
+      <form ng-hide="eventsShow.usersFound" ng-submit="eventsShow.findUser()">
+        <input type="text" name="" ng-model="eventsShow.userSearch" placeholder="Who do you want to invite? (Search by email)">
+        <input type="submit" value="Submit">
+      </form>
+      <form ng-show="eventsShow.usersFound.length" ng-submit="eventsShow.submitInvitation()">
+        <select ng-model="eventsShow.invitation.receiver_id">
+          <option ng-repeat="user in eventsShow.usersFound" value="{{user.id}}">{{user.email}}</option>
+        </select>
+        <input type="submit" name="" value="Submit">
+      </form>
+      <form ng-show="eventsShow.usersFound && !eventsShow.usersFound.length" >
+        <p>No email found - send email to {{eventsShow.userSearch}}?</p>
+        <button ng-click="eventsShow.searchAgain()" name="button">No - search again for users</button>
+      </form>
+    </div>
 
 
-    </li>
-  </ul>
-
-  <div class="invitationsDiv" ng-if="eventsShow.event.owner.id === main.user.id">
-    <h2>Submit Invitations</h2>
-    <form ng-hide="eventsShow.usersFound" ng-submit="eventsShow.findUser()">
-      <input type="text" name="" ng-model="eventsShow.userSearch" placeholder="Who do you want to invite? (Search by email)">
-      <input type="submit" value="Submit">
-    </form>
-    <form ng-show="eventsShow.usersFound.length" ng-submit="eventsShow.submitInvitation()">
-      <select ng-model="eventsShow.invitation.receiver_id">
-        <option ng-repeat="user in eventsShow.usersFound" value="{{user.id}}">{{user.email}}</option>
-      </select>
-      <input type="submit" name="" value="Submit">
-    </form>
-    <form ng-show="eventsShow.usersFound && !eventsShow.usersFound.length" >
-      <p>No email found - send email to {{eventsShow.userSearch}}?</p>
-      <button ng-click="eventsShow.searchAgain()" name="button">No - search again for users</button>
-    </form>
+    <button ng-click="eventsShow.lockEvent()" ng-show="eventsShow.event.accepted_invitations.length" name="button">Lock in event</button>
   </div>
 
+  <div ng-hide="eventsShow.event.active === 'yes'">
+    <h3>{{eventsShow.event.owner.first_name}}'s event is now locked:</h3>
+    <h6 ng-show="eventsShow.event.accepted_invitations.length">{{eventsShow.event.accepted_invitations.length}} other {{eventsShow.event.accepted_invitations.length === 1 ? 'person' : 'people'}} attending</h6>
+  </div>
 
-  <button ng-click="eventsShow.averageLocation()" name="button">What's the average?</button>
+  <div ng-show="eventsShow.restaurant">
+    <h3>The group is meeting at {{eventsShow.restaurant.name}}</h3>
+    <img class="restaurantImg" src="{{eventsShow.restaurant.featured_image}}">
+    <ng-map center="{{eventsShow.restaurant.location.latitude}},{{eventsShow.restaurant.location.longitude}}" zoom="14">
+      <marker position="[{{eventsShow.restaurant.location.latitude}},{{eventsShow.restaurant.location.longitude}}]" title="{{eventsShow.restaurant.name}}" on-click="eventsShow.goToRestaurant()"></marker>
+    </ng-map>
+  </div>
 
 </div>

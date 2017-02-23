@@ -1,15 +1,23 @@
 angular
-  .module('MeetMe')
-  .controller('EventsShowCtrl', EventsShowCtrl)
+.module('MeetMe')
+.controller('EventsShowCtrl', EventsShowCtrl)
 
-EventsShowCtrl.$inject = ['$http', 'API', '$state', 'Event', 'User',  'Invitation', '$stateParams']
+EventsShowCtrl.$inject = ['$http', 'API', '$state', 'Event', 'User',  'Invitation', '$stateParams', 'NgMap']
 
-function EventsShowCtrl($http, API, $state, Event,  User, Invitation, $stateParams) {
+function EventsShowCtrl($http, API, $state, Event,  User, Invitation, $stateParams, NgMap) {
   const vm = this;
 
 
-  vm.event = Event.get($stateParams);
-  console.log(vm.event);
+  Event.get($stateParams)
+  .$promise
+  .then(data => {
+    vm.event = data;
+    console.log(vm.event);
+    if (data.active === 'no'){
+      vm.getRestaurant(data);
+    }
+  });
+
 
   vm.findUser = () => {
     User
@@ -34,6 +42,7 @@ function EventsShowCtrl($http, API, $state, Event,  User, Invitation, $statePara
     .update({ id: invitation.id }, invitation)
     .$promise
     .then((data) => {
+      vm.event.accepted_invitations.push(data);
       console.log(data);
     });
   }
@@ -50,15 +59,15 @@ function EventsShowCtrl($http, API, $state, Event,  User, Invitation, $statePara
   vm.submitInvitation = () => {
     vm.invitation.event_id = $stateParams.id;
     Invitation
-      .save({ invitation: vm.invitation })
-      .$promise
-      .then(data => {
-        vm.event.invitations.push(data);
-        vm.searchAgain();
-      });
+    .save({ invitation: vm.invitation })
+    .$promise
+    .then(data => {
+      vm.event.invitations.push(data);
+      vm.searchAgain();
+    });
   };
 
-  vm.averageLocation = () => {
+  vm.lockEvent = () => {
     let totalLng = 0;
     let totalLat = 0;
     let array = vm.event.accepted_invitations
@@ -66,9 +75,14 @@ function EventsShowCtrl($http, API, $state, Event,  User, Invitation, $statePara
       totalLng += parseFloat(array[i].invitation_lng);
       totalLat += parseFloat(array[i].invitation_lat);
     }
-    console.log({
-      av_lat: totalLat/array.length,
-      av_lng: totalLng/array.length
+    const av_lat = totalLat/array.length;
+    const av_lng = totalLng/array.length;
+    vm.event.longitude = '' + av_lng;
+    vm.event.latitude = '' + av_lat;
+    vm.event.active = 'no';
+    Event.update({id: $stateParams.id}, vm.event).$promise.then(data => {
+      console.log('response', data);
+      vm.getRestaurant(data);
     });
   }
 
@@ -76,5 +90,26 @@ function EventsShowCtrl($http, API, $state, Event,  User, Invitation, $statePara
     vm.usersFound = null;
     vm.userSearch = null;
   };
+
+  vm.getRestaurant = (event) => {
+    console.log('running');
+    const restaurant = {
+      longitude: event.longitude,
+      latitude: event.latitude
+    };
+    $http
+    .post(`${API}/restaurant`, restaurant)
+    .then(response => {
+      vm.restaurant = response.data.restaurants[0].restaurant;
+      console.log(vm.restaurant, 'restaurant');
+      NgMap.getMap(map => {
+        console.log(map.getCenter())
+      });
+    });
+  };
+
+  vm.goToRestaurant = () => {
+    window.open(vm.restaurant.url, '_blank');
+  }
 
 }

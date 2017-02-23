@@ -24,6 +24,6 @@ function UsersEditCtrl(API, $stateParams, $state, User) {
     },
     function(error) {
       console.error(error);
-    })
+    });
   }
 }
