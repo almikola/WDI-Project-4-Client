@@ -15,12 +15,12 @@ function UsersEditCtrl(API, $stateParams, $state, User) {
 
   vm.usersUpdate = usersUpdate;
 
-  function usersUpdate($stateParams) {
+  function usersUpdate() {
     User
     .update({ id: $stateParams.id }, vm.user)
     .$promise
     .then(function(data) {
-      $state.go('');
+      $state.go('usersShow', { id: vm.user.id });
     },
     function(error) {
       console.error(error);

@@ -2,8 +2,8 @@ angular
 .module('MeetMe')
 .controller('EventsEditCtrl', EventsEditCtrl);
 
-EventsEditCtrl.$inject = ['API', '$stateParams', '$state', 'Event'];
-function EventsEditCtrl(API, $stateParams, $state, Event) {
+EventsEditCtrl.$inject = ['API', '$stateParams', '$state', 'Event', 'CurrentUserService'];
+function EventsEditCtrl(API, $stateParams, $state, Event, CurrentUserService) {
   var vm = this;
 
   Event
@@ -22,7 +22,7 @@ function EventsEditCtrl(API, $stateParams, $state, Event) {
     .update({ id: $stateParams.id }, vm.event)
     .$promise
     .then(function(data) {
-      $state.go('');
+      $state.go('usersShow', {id: CurrentUserService.currentUser.id });
     },
     function(error) {
       console.error(error);

@@ -1,28 +1,21 @@
-<div class="container">
   <h2>Edit Event</h2>
 
   <form ng-submit="eventsEdit.eventsUpdate()">
     <div class="row">
       <div class="six columns">
-        <input class="u-full-width" type="title" name="title" ng-model="eventsEdit.event.title" value="eventsEdit.event.title" placeholder="Title">
+        <input class="u-full-width" type="text" name="title" ng-model="eventsEdit.event.title" value="eventsEdit.event.title" placeholder="Title">
+      </div>
+      <div class="six columns">
+        <input type="text" class="u-full-width" id="image" placeholder="Image url" ng-model="eventsEdit.event.image">
       </div>
     </div>
     <div class="row">
       <div class="six columns">
         <input class="u-full-width" type="date" name="date" ng-model="eventsEdit.event.date" placeholder="Date" required/>
       </div>
-    </div>
-    <div class="row">
       <div class="six columns">
         <input class="u-full-width" type="time" name="time" ng-model="eventsEdit.event.time" placeholder="Time" value="eventsEdit.event.time">
       </div>
     </div>
-    <div class="row">
-      <div class="six columns">
-        <label for="image">Image</label>
-        <input type="text" class="u-full-width" id="image" placeholder="Image url" ng-model="eventsEdit.event.image">
-      </div>
-    </div>
     <input class="button" type="submit" value="Submit" />
   </form>
-</div>

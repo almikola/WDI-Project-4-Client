@@ -7,6 +7,7 @@ function userFactory(API, $resource){
   return $resource(`${API}/users/:id`, { id: '@_id'}, {
     // emailSearch: { method: 'GET', url: `${API}/users/email/:email`},
     register: { method: 'POST', url: `${API}/register` },
-    login: { method: 'POST', url: `${API}/login` }
+    login: { method: 'POST', url: `${API}/login` },
+    update: { method: 'PUT' }
   });
 }

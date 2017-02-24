@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container register">
   <h2>Register</h2>
-  <p>Sign up today to start partying!</p>
-  <form ng-submit="register.register()">
+  <p>Sign up today to start planning events!</p>
+  <form ng-submit="register.register()" class="form-register">
     <div class="row">
       <div class="six columns">
         <input class="u-full-width" type="email" name="email" ng-model="register.user.email" placeholder="Email">
@@ -34,6 +34,6 @@
       </div>
 
     </div>
-    <input class="button-primary" type="submit" value="Sign Up" />
+    <input class="button-primary form-button" type="submit" value="Sign Up" />
   </form>
 </div>

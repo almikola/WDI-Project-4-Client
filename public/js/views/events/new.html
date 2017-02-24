@@ -4,17 +4,18 @@
   <form ng-submit="eventsNew.eventCreate()">
     <div class="row">
       <div class="six columns">
-      <input class="u-full-width" type="title" name="title" ng-model="eventsNew.event.title" placeholder="Title">
+      <input class="u-full-width" type="text" name="title" ng-model="eventsNew.event.title" placeholder="Title">
     </div>
   </div>
     <div class="row">
       <div class="six columns">
-      <input class="u-full-width" type="date" name="date" ng-model="eventsNew.event.date" placeholder="Date">
+      <input class="u-full-width input" type="date" name="date" ng-model="eventsNew.event.date" placeholder="Date">
     </div>
   </div>
     <div class="row">
       <div class="six columns">
-      <input class="u-full-width" type="time" name="time" ng-model="eventsNew.event.time" placeholder="Time">
+      <label for="time">Time</label>
+      <input class="u-full-width input" type="time" name="time" ng-model="eventsNew.event.time" placeholder="Time">
     </div>
   </div>
     <div class="row">

@@ -1,29 +1,32 @@
-<h1>Users Show</h1>
+<div class="row user-show">
+    <div class="six columns">
+      <h3>{{ usersShow.user.email }}</h3>
+      <img ng-src="{{usersShow.user.image}}">
+      <div class="">
+        <button class="btn btn-default" ui-sref="usersEdit({ id: usersShow.user.id })">Edit</button>
+        <button ui-sref="eventsNew">New Event</button>
+      </div>
 
-<h3>{{ usersShow.user.email }}</h3>
-<img ng-src="{{usersShow.user.image}}">
-<button class="btn btn-default" ui-sref="usersEdit({ id: usersShow.user.id })">Edit</button>
+    </div>
+    <div class="six columns">
+      <h4>Events</h4>
+      <ul>
+        <li ng-repeat="event in usersShow.user.events">
+          <h5 ui-sref="eventsShow({id: event.id})">{{ event.title }}</h5>
+          <p>{{ event.date }} @ {{ event.time }}</p>
+          <button class="btn btn-default" ui-sref="eventsEdit({ id: event.id })">Edit</button>
+          <button class="btn btn-default" ng-click="usersShow.deleteEvent(event.id)">Delete</button>
+        </li>
+      </ul>
 
 
-
-<h4>Events</h4>
-<ul>
-  <li ng-repeat="event in usersShow.user.events">
-    <h5 ui-sref="eventsShow({id: event.id})">{{ event.title }}</h5>
-    <p>{{ event.date }} @ {{ event.time }}</p>
-    <button class="btn btn-default" ui-sref="eventsEdit({ id: event.id })">Edit</button>
-    <button class="btn btn-default" ng-click="usersShow.deleteEvent(event.id)">Delete</button>
-  </li>
-</ul>
-
-
-<h4>Invitations</h4>
-<ul>
-  <li ng-repeat="invitation in usersShow.user.received_invitations">
-    <h5 ui-sref="eventsShow({id: invitation.event.id})">{{ invitation.event.title }}</h5>
-    <h6>Status: {{ invitation.status }}</h6>
-    <h6>Sender: {{ invitation.sender.email }}</h6>
-  </li>
-</ul>
-
-<button ui-sref="eventsNew">New Event</button>
+      <h4>Invitations</h4>
+      <ul>
+        <li ng-repeat="invitation in usersShow.user.received_invitations">
+          <h5 ui-sref="eventsShow({id: invitation.event.id})">{{ invitation.event.title }}</h5>
+          <h6>Status: {{ invitation.status }}</h6>
+          <h6>Sender: {{ invitation.sender.email }}</h6>
+        </li>
+      </ul>
+    </div>
+  </div>
