@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container register">
   <h2>New Event</h2>
 
-  <form ng-submit="eventsNew.eventCreate()">
+  <form ng-submit="eventsNew.eventCreate()" class="form-register">
     <div class="row">
       <div class="six columns">
       <input class="u-full-width" type="text" name="title" ng-model="eventsNew.event.title" placeholder="Title">
@@ -9,12 +9,13 @@
   </div>
     <div class="row">
       <div class="six columns">
+        <!-- <label for="date">Date</label> -->
       <input class="u-full-width input" type="date" name="date" ng-model="eventsNew.event.date" placeholder="Date">
     </div>
   </div>
     <div class="row">
       <div class="six columns">
-      <label for="time">Time</label>
+      <!-- <label for="time">Time</label> -->
       <input class="u-full-width input" type="time" name="time" ng-model="eventsNew.event.time" placeholder="Time">
     </div>
   </div>

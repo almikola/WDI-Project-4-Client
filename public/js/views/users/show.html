@@ -1,32 +1,41 @@
-<div class="row user-show">
-    <div class="six columns">
-      <h3>{{ usersShow.user.email }}</h3>
-      <img ng-src="{{usersShow.user.image}}">
-      <div class="">
-        <button class="btn btn-default" ui-sref="usersEdit({ id: usersShow.user.id })">Edit</button>
-        <button ui-sref="eventsNew">New Event</button>
-      </div>
+<div class="container">
+  <h6>Hi, {{ usersShow.user.first_name }}!</h6>
 
-    </div>
-    <div class="six columns">
-      <h4>Events</h4>
-      <ul>
-        <li ng-repeat="event in usersShow.user.events">
-          <h5 ui-sref="eventsShow({id: event.id})">{{ event.title }}</h5>
-          <p>{{ event.date }} @ {{ event.time }}</p>
-          <button class="btn btn-default" ui-sref="eventsEdit({ id: event.id })">Edit</button>
-          <button class="btn btn-default" ng-click="usersShow.deleteEvent(event.id)">Delete</button>
-        </li>
-      </ul>
-
-
-      <h4>Invitations</h4>
-      <ul>
-        <li ng-repeat="invitation in usersShow.user.received_invitations">
-          <h5 ui-sref="eventsShow({id: invitation.event.id})">{{ invitation.event.title }}</h5>
-          <h6>Status: {{ invitation.status }}</h6>
-          <h6>Sender: {{ invitation.sender.email }}</h6>
-        </li>
-      </ul>
+  <div class="row user-show">
+    <div class="twelve columns">
+      <button class="button-primary" ui-sref="eventsNew">Create Event</button>
     </div>
   </div>
+</div>
+
+<div class="row user-show">
+  <div class="six columns">
+    <h3 class="title">Events</h3>
+
+    <ul class="userShow-list">
+      <li ng-repeat="event in usersShow.user.events">
+        <h5 ui-sref="eventsShow({id: event.id})" class="userShow-list">{{ event.title }} </h5>
+        <p>{{ event.date }} @ {{ event.time }}</p>
+        <button ui-sref="eventsShow({id: event.id})" class="userShow-list">View Your Event</button>
+        <!-- <button ui-sref="eventsEdit({ id: event.id })">Edit</button>
+        <button ng-click="usersShow.deleteEvent(event.id)">Delete</button> -->
+      </li>
+    </ul>
+  </div>
+
+  <div class="six columns">
+    <h3 class="title">Invitations</h3>
+    <ul class="userShow-list">
+      <li ng-repeat="invitation in usersShow.user.received_invitations">
+        <h5 ui-sref="eventsShow({id: invitation.event.id})" class="userShow-list">{{ invitation.event.title }}</h5>
+        <p>Status: <em>{{ invitation.status }}</em><br>
+          Invited by: <em>{{ invitation.sender.email }}</em></p>
+          <button ui-sref="eventsShow({id: invitation.event.id})">View Event</button>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+<div class="row user-show">
+  <button ui-sref="usersEdit({ id: usersShow.user.id })">Edit Profile</button>
+</div>

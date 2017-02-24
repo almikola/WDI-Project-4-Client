@@ -11,7 +11,6 @@ function UsersShowCtrl(User, Event, $stateParams){
   .$promise
   .then(function(data) {
     vm.user = data;
-    console.log(vm.user);
     vm.user.events.forEach((event) => {
       event.time = event.time.substring(11, 16);
     })

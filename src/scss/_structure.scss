@@ -14,7 +14,6 @@ main {
   padding-bottom:60px;   /* Height of the footer */
 }
 
-
 footer {
   position: absolute;
   bottom: 0;
@@ -44,12 +43,14 @@ img {
 }
 
 .jumbotron {
-  // background-color: white;
-  background-image: url('../images/toa-heftiba.jpg');
-  height: 300px;
+  background-color: white;
+  // background-image: url('../images/toa-heftiba.jpg');
+  // background-repeat: no-repeat;
+  height: 400px;
   width: 100%;
   margin: 0 auto;
   padding-top: 50px;
+  position: fixed;
 }
 .jumbotron h1 {
   text-align: center;
@@ -63,7 +64,8 @@ img {
 
 .jumbotron p {
   text-align: center;
-  font-size: 2em;
+  font-size: 3em;
+  font-family: 'Sansita';
   color: #004069;
   font-style: italic;
 }
@@ -95,4 +97,16 @@ img {
 
 button-primary.form-button {
   margin: 0;
+}
+
+.userShow-list {
+  list-style-type: none;
+}
+
+h5.userShow-list:hover {
+  color: #FF4C50;
+}
+
+h3.title {
+  color: #004069;
 }
