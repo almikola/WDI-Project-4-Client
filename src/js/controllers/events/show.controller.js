@@ -12,7 +12,7 @@ function EventsShowCtrl($http, API, $state, Event,  User, Invitation, $statePara
   .$promise
   .then(data => {
     vm.event = data;
-    console.log(vm.event);
+    vm.event.time = vm.event.time.substring(11, 16);
     if (data.active === 'no'){
       vm.getRestaurant(data);
     }

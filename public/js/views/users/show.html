@@ -1,5 +1,7 @@
+
 <div class="container">
   <h6>Hi, {{ usersShow.user.first_name }}!</h6>
+
 
   <div class="row user-show">
     <div class="twelve columns">
@@ -16,9 +18,9 @@
       <li ng-repeat="event in usersShow.user.events">
         <h5 ui-sref="eventsShow({id: event.id})" class="userShow-list">{{ event.title }} </h5>
         <p>{{ event.date }} @ {{ event.time }}</p>
-        <button ui-sref="eventsShow({id: event.id})" class="userShow-list">View Your Event</button>
-        <!-- <button ui-sref="eventsEdit({ id: event.id })">Edit</button>
-        <button ng-click="usersShow.deleteEvent(event.id)">Delete</button> -->
+        <button ui-sref="eventsShow({id: event.id})" class="userShow-list">View Your Event</button><br>
+        <button ui-sref="eventsEdit({ id: event.id })">Edit</button>
+        <button ng-click="usersShow.deleteEvent(event.id)">Delete</button>
       </li>
     </ul>
   </div>
