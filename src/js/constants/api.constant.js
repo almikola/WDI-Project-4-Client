@@ -1,3 +1,3 @@
 angular
   .module('MeetMe')
-  .constant('API', 'http://localhost:3000');
+  .constant('API', 'https://something-api-app.herokuapp.com/');
