@@ -35,7 +35,17 @@ footer {
   display: none;
 }
 
-// HOMEPAGE
+.US-event {
+  border: 1px black solid;
+}
+
+.restaurantImg {
+  border-radius: 166px;
+}
+
+img.eventShow {
+  border-radius: 0px;
+}
 
 .jumbotron {
   background-color: white;
@@ -61,15 +71,14 @@ footer {
   text-align: center;
   font-size: 3em;
   font-family: 'Sansita';
-  color: $blue;
+  color: #004069;
   font-style: italic;
 }
 
-// FORMS
 .input {
   height: 38px;
   padding: 6px 10px;
-  background-color: $white;
+  background-color: #fff;
   border: 1px solid #D1D1D1;
   border-radius: 4px;
   box-shadow: none;
@@ -95,84 +104,29 @@ button-primary.form-button {
   margin: 0;
 }
 
-// User show page
-
-
-ul.userShow-list {
+.userShow-list {
   list-style-type: none;
 }
 
-li.us-listItem.ng-scope {
-  box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.1);
-  height: 180px;
-}
-
-// li.us-listItemInvite.ng-scope {
-//   box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.1);
-//   height: 200px;
-// }
-
-div.one-half.column.us-eventInfo {
-  text-align: left;
-  margin: 0 auto;
-  padding: 10px;
-}
-
-div.one-half.column.us-eventImage {
-  margin: 0 auto;
+h5.userShow-list:hover {
+  color: #FF4C50;
 }
 
 h3.title {
-  font-weight: bold;
-  font-family: $logo-font;
+  color: #004069;
 }
 
-h5:hover {
-  color: $red;
-}
-
-button.userShow-list {
-  background: $blue;
-  border-color: $blue;
-  color: $white;
-}
-
-button.userShow-list:hover {
-  background: #2E6284;
-  border-color:#2E6284;
-}
-
-p.ng-binding {
-  margin-bottom: 1rem;
-}
-
-h5.userShow-list.ng-binding {
-  margin-bottom: 1rem;
-}
-
-p.us-date {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-p.us-adjust {
-  padding-top: 10px;
-  font-size: 1rem;
-}
-a {
-  text-decoration: none;
-  color: $black;
-}
-
-a:hover {
-  color: $red;
-}
-
-div.one-half.column.us-eventImage {
-  padding-top: 10px;
-}
-
-.us-image {
-  width: 180px;
+img.eShow {
+  width: 50px;
   height: auto;
+}
+
+div.eventShow {
+  height: 300px;
+  vertical-align: middle;
+}
+
+h3.show {
+  margin-top: 20px;
+  padding: 20px;
 }

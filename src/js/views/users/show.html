@@ -1,43 +1,53 @@
-
 <div class="container">
-  <h6>Hi, {{ usersShow.user.first_name }}!</h6>
-
 
   <div class="row user-show">
     <div class="twelve columns">
+      <h4>Hi, {{ usersShow.user.first_name }}</h4>
       <button class="button-primary" ui-sref="eventsNew">Create Event</button>
+      <p>... and get your friends to <strong>meet you there!</strong></p>
     </div>
   </div>
-</div>
 
-<div class="row user-show">
+
+<div class="row">
   <div class="six columns">
     <h3 class="title">Events</h3>
-
     <ul class="userShow-list">
-      <li ng-repeat="event in usersShow.user.events">
-        <h5 ui-sref="eventsShow({id: event.id})" class="userShow-list">{{ event.title }} </h5>
-        <p>{{ event.date }} @ {{ event.time }}</p>
-        <button ui-sref="eventsShow({id: event.id})" class="userShow-list">View Your Event</button><br>
-        <button ui-sref="eventsEdit({ id: event.id })">Edit</button>
-        <button ng-click="usersShow.deleteEvent(event.id)">Delete</button>
-      </li>
+      <li ng-repeat="event in usersShow.user.events" class="us-listItem">
+        <div class="one-half column us-eventImage">
+          <img class="us-image" ng-src="{{event.image}}">
+        </div>
+      <div class="one-half column us-eventInfo">
+        <h5 ui-sref="eventsShow({id: event.id})" class="userShow-list">{{ event.title }}</h5>
+        <p class="us-date">{{ event.date }} at {{ event.time }}</p>
+        <button ui-sref="eventsShow({id: event.id})" class="userShow-list">View Event</button><br>
+        <p class="us-adjust"><a ui-sref="eventsEdit({ id: event.id })">Edit</a> /
+        <a ng-click="usersShow.deleteEvent(event.id)">Delete</a></p>
+      </div>
+    </li>
     </ul>
   </div>
 
-  <div class="six columns">
+
+<div class="six columns">
     <h3 class="title">Invitations</h3>
     <ul class="userShow-list">
-      <li ng-repeat="invitation in usersShow.user.received_invitations">
+      <li ng-repeat="invitation in usersShow.user.received_invitations" class="us-listItem">
+        <div class="one-half column us-eventImage">
+          <img class="us-image" ng-src="{{invitation.event.image}}">
+        </div>
+        <div class="one-half column us-eventInfo">
         <h5 ui-sref="eventsShow({id: invitation.event.id})" class="userShow-list">{{ invitation.event.title }}</h5>
-        <p>Status: <em>{{ invitation.status }}</em><br>
-          Invited by: <em>{{ invitation.sender.email }}</em></p>
-          <button ui-sref="eventsShow({id: invitation.event.id})">View Event</button>
+        <p class="us-date">Invited by: <em>{{ invitation.sender.email }}</em><br>
+          Status: <em>{{ invitation.status }}</em></p>
+          <button class="userShow-list" ui-sref="eventsShow({id: invitation.event.id})">View Event</button>
+        </div>
         </li>
       </ul>
     </div>
-
+  </div>
   </div>
 <div class="row user-show">
-  <button ui-sref="usersEdit({ id: usersShow.user.id })">Edit Profile</button>
+  <p ui-sref="usersEdit({ id: usersShow.user.id })">Edit Profile</p>
+</div>
 </div>
