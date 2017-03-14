@@ -1,6 +1,6 @@
 angular
-  .module('MeetMe')
-  .controller('MainCtrl', MainCtrl);
+.module('MeetMe')
+.controller('MainCtrl', MainCtrl);
 
 MainCtrl.$inject = ['$scope', '$rootScope', 'CurrentUserService', '$state'];
 function MainCtrl($scope, $rootScope, CurrentUserService, $state) {
@@ -13,14 +13,14 @@ function MainCtrl($scope, $rootScope, CurrentUserService, $state) {
   });
 
   $rootScope.$on('loggedIn', () => {
-    vm.user = CurrentUserService.currentUser;
-    $state.go('usersShow', { id: vm.user.id });
+    // vm.user = CurrentUserService.currentUser;
+    // $state.go('usersShow', { id: vm.user.id });
   });
 
   $rootScope.$on('loggedOut', () => {
-  vm.user = null;
-  $state.go('home');
-});
+    // vm.user = null;
+    // $state.go('home');
+  });
 
   vm.logout = () => {
     CurrentUserService.removeUser();
