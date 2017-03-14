@@ -11,7 +11,7 @@ function EventsNewCtrl($state, User, Event, CurrentUserService) {
 
   function eventCreate() {
     Event
-    .save({ event: {title: vm.event.title, date: vm.event.date, time: vm.event.time, owner_id: vm.user.id }})
+    .save({ event: {title: vm.event.title, date: vm.event.date, time: vm.event.time, owner_id: vm.user.id, image: vm.event.image }})
     .$promise
     .then((response) => {
       $state.go('eventsShow', { id: response.id, created: true });

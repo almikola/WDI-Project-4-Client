@@ -1,13 +1,10 @@
 <div class="container">
   <div class="six columns">
     <div class="row eventInfo">
-      <img class="eventShow" ng-src="{{eventsShow.event.image}}">
+      <img class="eventShow" ng-src="{{ eventsShow.event.image }}">
       <h3 class="title">{{ eventsShow.event.title }}</h3>
       <p class="us-date">{{ eventsShow.event.date }} at {{ eventsShow.event.time }}</p>
     </div>
-
-
-
     <div class="row">
       <div class="invitationsDiv" ng-if="eventsShow.event.owner.id === main.user.id">
         <h5 class="show">Invite your friends</h5>
