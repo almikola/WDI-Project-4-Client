@@ -10,6 +10,7 @@ function MainCtrl($scope, $rootScope, CurrentUserService, $state) {
   navigator.geolocation.getCurrentPosition(position => {
     vm.coords.lat = position.coords.latitude;
     vm.coords.lng = position.coords.longitude;
+    console.log('Setting lat and lng:',vm.coords.lat,vm.coords.lng);
   });
 
   $rootScope.$on('loggedIn', () => {
@@ -25,4 +26,5 @@ function MainCtrl($scope, $rootScope, CurrentUserService, $state) {
   vm.logout = () => {
     CurrentUserService.removeUser();
   }
+
 }

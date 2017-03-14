@@ -173,8 +173,15 @@ div.one-half.column.us-eventImage {
 }
 
 .us-image {
-  width: 100px;
+  width: 150px;
   height: auto;
+  border-radius: 10px;
+}
+
+img.eventShow {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
 }
 
 

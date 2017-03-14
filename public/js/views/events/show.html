@@ -31,7 +31,7 @@
         <div class="cutoff">
       <div ng-hide="eventsShow.event.active === 'yes'">
         <h5 class="show" on-click="eventsShow.goToRestaurant()">See you at <strong><span on-click="eventsShow.goToRestaurant()">{{eventsShow.restaurant.name}}</span></strong>!</h5>
-      </div>
+
       <div ng-show="eventsShow.restaurant">
         <!-- <img class="restaurantImg" src="{{eventsShow.restaurant.featured_image}}"> -->
         <p ng-show="eventsShow.event.accepted_invitations.length">{{eventsShow.event.accepted_invitations.length}} other {{eventsShow.event.accepted_invitations.length === 1 ? 'person' : 'people'}} attending.</p>
@@ -40,8 +40,8 @@
           <marker position="[{{eventsShow.restaurant.location.latitude}},{{eventsShow.restaurant.location.longitude}}]" title="{{eventsShow.restaurant.name}}" on-click="eventsShow.goToRestaurant()"></marker>
         </ng-map>
       </div>
-      </div>
-      </div>
+
+
         <h5 class="showLocation">Event guestlist:</h5>
         <ul class="userShow-list">
           <li ng-repeat="invitation in eventsShow.event.invitations">
@@ -58,7 +58,9 @@
         </li>
         </ul>
       </div>
-
+</div>
+</div>
+</div>
     <div class="row eventInfo">
 
     <div ng-hide="eventsShow.event.active === 'no'">
@@ -86,3 +88,6 @@
   </div>
 </div>
 </div>
+
+
+{{eventsShow.restaurant.name}}

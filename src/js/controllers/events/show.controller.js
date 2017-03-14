@@ -93,6 +93,7 @@ function EventsShowCtrl($http, API, $state, Event,  User, Invitation, $statePara
 
   vm.getRestaurant = (event) => {
     console.log('running');
+    console.log(event.longitude, event.latitude);
     const restaurant = {
       longitude: event.longitude,
       latitude: event.latitude
