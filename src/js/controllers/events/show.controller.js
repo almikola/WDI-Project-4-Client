@@ -37,13 +37,11 @@ function EventsShowCtrl($http, API, $state, Event,  User, Invitation, $statePara
     invitation.receiver_id = invitation.receiver.id;
     invitation.invitation_lng = ('' + coords.lng);
     invitation.invitation_lat = (''+ coords.lat);
-    console.log(invitation);
     Invitation
     .update({ id: invitation.id }, invitation)
     .$promise
     .then((data) => {
       vm.event.accepted_invitations.push(data);
-      console.log(data);
     });
   }
 
@@ -81,7 +79,6 @@ function EventsShowCtrl($http, API, $state, Event,  User, Invitation, $statePara
     vm.event.latitude = '' + av_lat;
     vm.event.active = 'no';
     Event.update({id: $stateParams.id}, vm.event).$promise.then(data => {
-      console.log('response', data);
       vm.getRestaurant(data);
     });
   }
@@ -92,8 +89,6 @@ function EventsShowCtrl($http, API, $state, Event,  User, Invitation, $statePara
   };
 
   vm.getRestaurant = (event) => {
-    console.log('running');
-    console.log(event.longitude, event.latitude);
     const restaurant = {
       longitude: event.longitude,
       latitude: event.latitude
@@ -102,7 +97,6 @@ function EventsShowCtrl($http, API, $state, Event,  User, Invitation, $statePara
     .post(`${API}/restaurant`, restaurant)
     .then(response => {
       vm.restaurant = response.data.restaurants[0].restaurant;
-      console.log(vm.restaurant, 'restaurant');
       NgMap.getMap(map => {
         console.log(map.getCenter())
       });

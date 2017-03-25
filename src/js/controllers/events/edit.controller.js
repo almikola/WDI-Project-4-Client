@@ -12,7 +12,6 @@ function EventsEditCtrl(API, $stateParams, $state, Event, CurrentUserService) {
   .then(function(data) {
     vm.event = data;
     vm.event.date = new Date(vm.event.date);
-    // vm.event.time = vm.event.time.substring(11, 16);
   });
 
   vm.eventsUpdate = eventsUpdate;

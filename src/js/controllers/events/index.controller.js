@@ -11,7 +11,6 @@ function EventsIndexCtrl(Event) {
   .query()
   .$promise
   .then(data => {
-    console.log(data);
     vm.event = data;
   });
 

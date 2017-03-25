@@ -4,6 +4,7 @@
       <img class="eventShow" ng-src="{{ eventsShow.event.image }}">
       <h3 class="title">{{ eventsShow.event.title }}</h3>
       <p class="us-date">{{ eventsShow.event.date }} at {{ eventsShow.event.time }}</p>
+      <p ng-hide="eventsShow.event.active === 'yes'"> Meet at {{eventsShow.restaurant.name}}</p>
     </div>
     <div class="row">
       <div class="invitationsDiv" ng-if="eventsShow.event.owner.id === main.user.id">
