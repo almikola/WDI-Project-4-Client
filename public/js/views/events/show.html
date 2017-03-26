@@ -6,6 +6,7 @@
       <h3 class="title">{{ eventsShow.event.title }}</h3>
       <p class="us-date">{{ eventsShow.event.date }} at {{ eventsShow.event.time }}</p>
       <p ng-hide="eventsShow.event.active === 'yes'"> Meet at {{eventsShow.restaurant.name}}</p>
+      <a class="us-adjust" ui-sref="eventsEdit({ id: event.id })">Edit</a>
     </div>
 <hr size=2>
 <!-- INVITE YOUR FRIENDS -->
@@ -73,8 +74,8 @@
 
     <div ng-hide="eventsShow.event.active === 'no'">
       <div ng-if="eventsShow.event.owner.id === main.user.id">
-        <button ng-click="eventsShow.lockEvent()" ng-show="eventsShow.event.accepted_invitations.length" name="button">Pick your location!</button>
-        <p ng-show="eventsShow.event.accepted_invitations.length">Let MeetMe figure where to go!</p>
+        <button ng-click="eventsShow.lockEvent()" ng-show="eventsShow.event.accepted_invitations.length" name="button" class="locationButton">Pick your location!</button>
+        <!-- <p ng-show="eventsShow.event.accepted_invitations.length">Let MeetMe figure where out to go!</p> -->
       </div>
 
       <!-- EVENT GUEST LIST WHEN RESTAURNT NOT CHOSEN -->
@@ -82,21 +83,26 @@
       <div class="six columns">
       <ul class="userShow-list">
         <li ng-repeat="invitation in eventsShow.event.invitations">
-          <div class="one-third column">
+          <div class="two columns">
           <img class="eShow" ng-src="{{invitation.receiver.image}}">
         </div>
         <div class="one-third column guestlist">
           <p class="us-date">{{invitation.receiver.email }}</p>
         </div>
         <div class="one-third column">
-          <a class="inviteDelete" ng-if="invitation.sender.id === main.user.id && invitation.status != 'accepted'" type="button" name="button" ng-click="eventsShow.deleteInvitation(invitation)">Delete</a>
-          <button ng-if="invitation.receiver.id === main.user.id && invitation.status != 'accepted'" type="button" name="button" ng-click="eventsShow.acceptInvitation(invitation, main.coords)">Accept</button>
+          <div class="dropdown" ng-if="invitation.receiver.id === main.user.id && invitation.status != 'accepted'">
+            <button class="dropbtn">Will you go?</button>
+            <div class="dropdown-content">
+              <a ng-if="invitation.receiver.id === main.user.id && invitation.status != 'accepted'" ng-click="eventsShow.acceptInvitation(invitation, main.coords)">Yes!</a>
+
+              <a class="inviteDelete" ng-if="invitation.receiver.id === main.user.id && invitation.status != 'accepted'" ng-click="eventsShow.deleteInvitation(invitation)">No, sorry.</a>
+
+            </div>
+          </div>
         </div>
       </li>
       </ul>
     </div>
   </div>
   </div>
-</div>
-</div>
 </div>

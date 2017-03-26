@@ -20,8 +20,8 @@
       <div class="one-half column us-eventInfo">
         <h5 ui-sref="eventsShow({id: event.id})" class="userShow-list">{{ event.title }}</h5>
         <p class="us-date">{{ event.date }} at {{ event.time }}<br>
-        <a class="us-adjust" ui-sref="eventsEdit({ id: event.id })">Edit</a> /
-        <a ng-click="usersShow.deleteEvent(event.id)">Delete</a></p>
+        <a class="us-adjust" ui-sref="eventsEdit({ id: event.id })">Edit</a> |
+        <a class="us-adjust" ng-click="usersShow.deleteEvent(event.id)">Delete</a></p>
         <button ui-sref="eventsShow({id: event.id})" class="userShow-list">View Event</button><br>
 
       </div>
