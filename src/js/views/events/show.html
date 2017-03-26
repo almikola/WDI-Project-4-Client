@@ -5,7 +5,7 @@
       <img class="eventShow" ng-src="{{ eventsShow.event.image }}">
       <h3 class="title">{{ eventsShow.event.title }}</h3>
       <p class="us-date">{{ eventsShow.event.date }} at {{ eventsShow.event.time }}</p>
-      <p ng-hide="eventsShow.event.active === 'yes'"> Meet at {{eventsShow.restaurant.name}}</p>
+      <p ng-hide="eventsShow.event.active === 'yes'"> Meet at {{eventsShow.restaurant.name}}.</p>
       <a class="us-adjust" ui-sref="eventsEdit({ id: event.id })">Edit</a>
     </div>
 <hr size=2>
