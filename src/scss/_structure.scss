@@ -65,6 +65,10 @@ footer {
   font-style: italic;
 }
 
+p.note {
+  font-size: small;
+}
+
 // FORMS
 .input {
   height: 38px;
@@ -228,6 +232,10 @@ h5.showLocation {
   padding-top: 20px;
 }
 
-p.note {
-  font-size: small;
+div.invitationsDiv {
+  padding-top: 20px;
+}
+
+div.one-third.column.guestlist {
+  line-height: 57px;
 }
