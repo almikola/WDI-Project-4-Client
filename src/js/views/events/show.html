@@ -59,10 +59,11 @@
             <p>{{invitation.receiver.email }}</p>
           </div>
           <div class="one-third column">
+            <br>
             <a class="inviteDelete" ng-if="invitation.sender.id === main.user.id && invitation.status != 'accepted'" type="button" name="button" ng-click="eventsShow.deleteInvitation(invitation)">Delete</a>
             <button ng-if="invitation.receiver.id === main.user.id && invitation.status != 'accepted'" type="button" name="button" ng-click="eventsShow.acceptInvitation(invitation, main.coords)">Accept</button>
           </div>
-        </li><br>
+        </li>
         </ul>
       </div>
 </div>
