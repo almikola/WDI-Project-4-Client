@@ -106,6 +106,14 @@ ul.userShow-list {
   list-style-type: none;
 }
 
+li.userShow-item {
+  display: block;
+}
+
+ul.eventShow-list {
+  list-style-type: none;
+}
+
 li.us-listItem.ng-scope {
   box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.1);
   height: 180px;
