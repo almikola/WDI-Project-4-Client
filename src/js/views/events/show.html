@@ -61,7 +61,7 @@
             <div class="one-third column">
               <div ng-if="invitation.receiver.id === main.user.id && invitation.status === 'accepted'"><p>Accepted</p></div>
               <div ng-if="invitation.receiver.id != main.user.id && invitation.status != 'accepted'"><p>Pending</p></div>
-              <div ng-if="invitation.receiver.id != main.user.id && invitation.status = 'accepted'"><p>Accepted</p></div>
+              <div ng-if="invitation.receiver.id != main.user.id && invitation.status === 'accepted'"><p>Accepted</p></div>
               <div class="dropdown" ng-if="invitation.receiver.id === main.user.id && invitation.status != 'accepted'">
                 <button class="dropbtn">Will you go?</button>
                 <div class="dropdown-content">
@@ -101,7 +101,7 @@
             <div class="one-third column">
               <div ng-if="invitation.receiver.id === main.user.id && invitation.status === 'accepted'"><p>Accepted</p></div>
               <div ng-if="invitation.receiver.id != main.user.id && invitation.status != 'accepted'"><p>Pending</p></div>
-              <div ng-if="invitation.receiver.id != main.user.id && invitation.status = 'accepted'"><p>Accepted</p></div>
+              <div ng-if="invitation.receiver.id != main.user.id && invitation.status === 'accepted'"><p>Accepted</p></div>
               <div class="dropdown" ng-if="invitation.receiver.id === main.user.id && invitation.status != 'accepted'">
                 <button class="dropbtn">Will you go?</button>
                 <div class="dropdown-content">
